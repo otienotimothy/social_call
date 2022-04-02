@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 from pathlib import Path
 from decouple import config
+import dj_database_url
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -93,6 +94,10 @@ if config('DEBUG', cast=bool):
             'HOST': config('HOST'),
             'PORT': config('PORT'),
         }
+    }
+else:
+    DATABASES = {
+        'default': dj_database_url.config(conn_max_age=600)
     }
 
 

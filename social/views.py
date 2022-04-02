@@ -1,8 +1,9 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 
 # Create your views here.
 def index(request):
-    return 'Hello From the Landing Page(index)'
+    return HttpResponse('Hello From Index')
 
 def home(request):
-    return 'Hello From the Home Page'
+    return HttpResponse('Hello From Home Page')

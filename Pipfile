@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 django = "*"
 whitenoise = "*"
+python-decouple = "*"
 
 [dev-packages]
 autopep8 = "*"

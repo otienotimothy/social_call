@@ -56,8 +56,8 @@
 					</ul>
 				</div>
 				{% else %}
-				<a href="#" class="btn btn-outline-light me-3"> Login </a>
-				<a href="#" class="btn btn-primary me-3"> SignUp </a>
+				<a href="{% url 'login' %}" class="btn btn-outline-light me-3"> Login </a>
+				<a href="{% url 'signup' %}" class="btn btn-primary me-3"> SignUp </a>
 				{% endif %}
 			</div>
 		</div>

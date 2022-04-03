@@ -29,8 +29,6 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
-
 
 # Application definition
 
@@ -95,10 +93,15 @@ if config('DEBUG', cast=bool):
             'PORT': config('PORT'),
         }
     }
+
+    ALLOWED_HOSTS = []
+
 else:
     DATABASES = {
         'default': dj_database_url.config(conn_max_age=600)
     }
+
+    ALLOWED_HOSTS = config('HOSTS', cast=Csv())
 
 
 # Password validation

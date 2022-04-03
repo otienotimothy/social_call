@@ -7,3 +7,9 @@ def index(request):
 
 def home(request):
     return HttpResponse('Hello From Home Page')
+
+def signupUser(request):
+    return render(request, 'signup.html')
+
+def loginUser(request):
+    return render(request, 'login.html')

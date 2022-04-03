@@ -1,0 +1,123 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+	<!-- Container wrapper -->
+	<div class="container">
+		<!-- Navbar brand -->
+
+		<a class="text-light navbar-brand fs-2" href="{% url 'index'%}">
+			Social <span class="text-primary">Call</span>
+		</a>
+
+		<!-- Toggle button -->
+		<button
+			class="navbar-toggler"
+			type="button"
+			data-bs-toggle="collapse"
+			data-bs-target="#navbarButtonsExample"
+			aria-controls="navbarButtonsExample"
+			aria-expanded="false"
+			aria-label="Toggle navigation"
+		>
+			<i class="fas fa-bars"></i>
+		</button>
+
+		<!-- Collapsible wrapper -->
+		<div class="collapse navbar-collapse" id="navbarButtonsExample">
+			<div class="ms-auto d-flex align-items-center">
+				<form class="input-group me-5">
+					<div class="form-outline">
+						<input type="search" id="form1" class="form-control" placeholder="Search"/>
+					</div>
+					<button type="button" class="btn btn-primary">
+						<i class="fas fa-search"></i>
+					</button>
+				</form>
+				<a class="nav-link text-light fs-4" href="#">
+                    <i class="fa-solid fa-house"></i>
+                </a>
+				<a class="nav-link text-light fs-4" href="#"> 
+                    <i class="fa-solid fa-circle-plus"></i>
+                </a>
+				<div class="nav-item dropdown">
+					<a
+						class="nav-link dropdown-toggle text-light fs-4"
+						href="#"
+						id="navbarDropdown"
+						role="button"
+						data-bs-toggle="dropdown"
+						aria-expanded="false"
+					>
+						<i class="fa-solid fa-user"></i>
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<li><a class="dropdown-item" href="#">Profile</a></li>
+						<li><a class="dropdown-item" href="#">Logout</a></li>
+					</ul>
+				</div>
+				<a href="#" class="btn btn-outline-light me-3"> Login </a>
+				<a href="#" class="btn btn-primary me-3"> SignUp </a>
+			</div>
+		</div>
+		<!-- Collapsible wrapper -->
+	</div>
+	<!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
+
+<!-- <nav style="color: white;" class="navbar navbar-expand-lg navbar-light bg-dark">
+	<div class="container-fluid">
+		<a class="navbar-brand display-4" href="#">
+			<span class="text-light">Social</span>
+			<span class="text-primary">Call</span>
+		</a>
+		<button
+			class="navbar-toggler"
+			type="button"
+			data-bs-toggle="collapse"
+			data-bs-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent"
+			aria-expanded="false"
+			aria-label="Toggle navigation"
+		>
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div style="background-color: red;" class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav ms-auto mb-2 d-flex">
+				<div class="input-group">
+					<div class="form-outline">
+						<input type="search" id="form1" class="form-control" />
+					</div>
+					<button type="button" class="btn btn-primary">
+						<i class="fas fa-search"></i>
+					</button>
+				</div>
+				<li class="nav-item">
+					
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#"> Upload </a>
+				</li>
+				<li class="nav-item dropdown">
+					<a
+						class="nav-link dropdown-toggle"
+						href="#"
+						id="navbarDropdown"
+						role="button"
+						data-bs-toggle="dropdown"
+						aria-expanded="false"
+					>
+						Profile Icon
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<li><a class="dropdown-item" href="#">Profile</a></li>
+						<li><a class="dropdown-item" href="#">Logout</a></li>
+					</ul>
+				</li>
+                <div class="d-flex w-25">
+                    <a href="#" class="btn btn-light"> Login </a>
+                    <a href="#" class="btn btn-light"> Sign Up </a>
+                </div>
+			</ul>
+		</div>
+	</div>
+</nav> -->

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .forms import UserRegistrationForm, LoginUserForm
@@ -9,6 +10,7 @@ from .forms import UserRegistrationForm, LoginUserForm
 def index(request):
     return render(request, 'index.html')
 
+@login_required(login_url='login')
 def home(request):
     return HttpResponse('Hello From Home Page')
 

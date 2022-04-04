@@ -1,0 +1,57 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="container d-flex flex-column align-items-center">
+	<div class="card my-5 w-50">
+		<div class="card-header d-flex align-items-center">
+			<img
+				class="rounded-circle z-depth-2"
+				alt="100x100"
+				src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg"
+				width="60"
+				height="60"
+			/>
+			<p class="fs-5 ms-4 mt-2">Username</p>
+		</div>
+		<div class="card-body">
+			<img
+				class="z-depth-2 w-100"
+				alt="100x100"
+				src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg"
+			/>
+		</div>
+		<div class="card-footer">
+			<div class="small d-flex justify-content-start">
+				<a href="#!" class="d-flex align-items-center me-3">
+					<i class="far fa-thumbs-up me-2"></i>
+					<p class="mb-0">Like</p>
+				</a>
+				<a
+					data-bs-toggle="collapse"
+					href="#comments-1"
+					role="button"
+					class="d-flex align-items-center me-3"
+				>
+					<i class="far fa-comment-dots me-2"></i>
+					<p class="mb-0">Comment</p>
+				</a>
+			</div>
+			<div
+				id="comments-1"
+				class="collapse card-footer py-3 border-0"
+				style="background-color: #f8f9fa"
+			>
+				<form action="/add_comment/{{post.id}}" method="POST">
+					{% csrf_token %}
+					<div class="d-flex flex-start w-100">
+						<div class="form-outline w-100">
+							<input type="text" name="" id="" class="form-control form-control-lg" placeholder="Comment">
+						</div>
+					</div>
+					<div class="float-end mt-2 pt-1">
+                        <button type="submit" class="btn btn-primary btn-sm">Comment</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -12,14 +11,14 @@ def index(request):
 
 @login_required(login_url='login')
 def home(request):
-    return HttpResponse('Hello From Home Page')
+    return render(request, 'home.html')
 
 def signupUser(request):
     form = UserRegistrationForm()
     context = {'form': form}
 
     if request.user.is_authenticated:
-        return redirect(index)
+        return redirect(home)
 
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
@@ -36,7 +35,7 @@ def signupUser(request):
                 user.username = user.username.lower()
                 user.save()
                 login(request, user)
-                return redirect(index)
+                return redirect(home)
     return render(request, 'signup.html', context)
 
 def loginUser(request):
@@ -44,7 +43,7 @@ def loginUser(request):
     context = {'form': form}
 
     if request.user.is_authenticated:
-        return redirect(index)
+        return redirect(home)
 
     if request.method == 'POST':
         form = LoginUserForm(request.POST)
@@ -58,7 +57,7 @@ def loginUser(request):
                         request, username=username, password=password)
                     if user:
                         login(request, user)
-                        return redirect(index)
+                        return redirect(home)
                     else:
                         messages.error(request, 'Invalid username or password')
             except:

@@ -1,0 +1,94 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="container mt-3">
+	<div class="d-flex flex-wrap align-items-center justify-content-around">
+		<img
+			class="rounded-circle z-depth-2"
+			alt="100x100"
+			src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg"
+			data-holder-rendered="true"
+		/>
+		<div class="w-md-50 ps-md-5">
+			<div class="d-flex align-items-center justify-content-between mt-2">
+				<p class="fs-3">Username</p>
+				<a class="btn btn-primary">Edit Profile</a>
+			</div>
+			<div class="d-flex align-items-center flex-wrap mt-2">
+				<p class="me-3">23 <span class="text-primary">Post</span></p>
+				<p class="me-3">23 <span class="text-success">Followers</span></p>
+				<p>23 <span class="text-danger">Following</span></p>
+			</div>
+			<p class="fs-5">
+				<span class="d-inline-block me-3">FirstName</span>
+				<span class="d-inline-block">LastName</span>
+			</p>
+			<p>Bio</p>
+		</div>
+	</div>
+	<hr />
+	<div>
+		<h2 class="text-center mb-4">Posts</h2>
+		<div class="d-flex align-items-center justify-content-around flex-wrap">
+			<div class="card mb-3">
+				<div class="card-body">
+					<img
+						class="z-depth-2 w-100"
+						alt="100x100"
+						src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg"
+						data-holder-rendered="true"
+					/>
+				</div>
+				<div class="card-footer">
+					<a href="">
+						<i class="fa-solid fa-trash-can"></i>
+					</a>
+				</div>
+			</div>
+			<div class="card mb-3">
+				<div class="card-body">
+					<img
+						class="z-depth-2 w-100"
+						alt="100x100"
+						src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg"
+						data-holder-rendered="true"
+					/>
+				</div>
+				<div class="card-footer">
+					<a href="">
+						<i class="fa-solid fa-trash-can"></i>
+					</a>
+				</div>
+			</div>
+			<div class="card mb-3">
+				<div class="card-body">
+					<img
+						class="z-depth-2 w-100"
+						alt="100x100"
+						src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg"
+						data-holder-rendered="true"
+					/>
+				</div>
+				<div class="card-footer">
+					<a href="">
+						<i class="fa-solid fa-trash-can"></i>
+					</a>
+				</div>
+			</div>
+			<div class="card mb-3">
+				<div class="card-body">
+					<img
+						class="z-depth-2 w-100"
+						alt="100x100"
+						src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg"
+						data-holder-rendered="true"
+					/>
+				</div>
+				<div class="card-footer">
+					<a href="">
+						<i class="fa-solid fa-trash-can"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

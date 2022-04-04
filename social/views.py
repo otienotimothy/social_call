@@ -1,5 +1,5 @@
+from unicodedata import name
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -14,8 +14,9 @@ def index(request):
 def home(request):
     return render(request, 'home.html')
 
+@login_required
 def loadProfile(request, username):
-    return HttpResponse(f'Hello From Profile of {username}')
+    return render(request, 'profile.html')
 
 def signupUser(request):
     form = UserRegistrationForm()

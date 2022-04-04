@@ -12,8 +12,13 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 import os
 from pathlib import Path
-from decouple import config,Csv
+from decouple import config, Csv
 import dj_database_url
+
+# Set Up Cloudinary
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -158,3 +163,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+cloudinary.config(
+    cloud_name=config('CLOUDNAME'),
+    api_key=config('APIKEY'),
+    api_secret=config('APISECRET')
+)

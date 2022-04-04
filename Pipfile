@@ -9,6 +9,7 @@ whitenoise = "*"
 python-decouple = "*"
 psycopg2 = "*"
 dj-database-url = "*"
+cloudinary = "*"
 
 [dev-packages]
 autopep8 = "*"

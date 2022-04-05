@@ -26,19 +26,22 @@
 				<p>23 <span class="text-danger">Following</span></p>
 			</div>
 			<p class="fs-5">
-				<span class="d-inline-block me-3">FirstName</span>
-				<span class="d-inline-block">LastName</span>
+				<span class="d-inline-block me-3"> {{profile.profile.firstName}} </span>
+				<span class="d-inline-block"> {{profile.profile.lastName}} </span>
 			</p>
-			<p>Bio</p>
+			<div>
+				<h5>Bio</h5>
+				<p> {{profile.profile.bio}} </p>
+			</div>
 		</div>
 	</div>
 	<hr />
 	<div>
 		<h2 class="text-center mb-4">Posts</h2>
-		<div class="d-flex align-items-center justify-content-around flex-wrap">
+		<div class="d-flex justify-content-around flex-wrap">
 			{% if posts %}
 			{% for post in posts %}
-			<div class="card mb-3">
+			<div style="width: 22rem;" class="card mb-3">
 				<div class="card-body">
 					<img
 						class="z-depth-2 w-100"

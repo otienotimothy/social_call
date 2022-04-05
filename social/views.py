@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .forms import UserRegistrationForm, LoginUserForm, CreatePostForm, EditProfileForm
-from .models import Post
+from .models import  Profile, Post
 
 # Create your views here.
 def index(request):
@@ -38,8 +38,21 @@ def home(request):
 
 @login_required(login_url='login')
 def loadProfile(request, username):
+    try:
+        userProfile = User.objects.get(username=username)
+        posts = Post.objects.filter(posted_by__username=username)
+    except:
+        messages.error('An error occurred while loading Profile...')
+
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = request.user
+            profile.save()
+    
     form = EditProfileForm()
-    context = {'form':form}
+    context = {'form':form, 'profile': userProfile, 'posts':posts}
     return render(request, 'profile.html', context)
 
 def signupUser(request):
@@ -63,6 +76,8 @@ def signupUser(request):
                 user.email = user.email.lower()
                 user.username = user.username.lower()
                 user.save()
+                userProfile = Profile(user=user)
+                userProfile.save()
                 login(request, user)
                 return redirect(home)
     return render(request, 'signup.html', context)

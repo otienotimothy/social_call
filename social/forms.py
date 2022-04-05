@@ -51,5 +51,5 @@ class EditProfileForm(forms.ModelForm):
             'firstName': TextInput(attrs={'class': 'form-control my-1'}),
             'lastName': TextInput(attrs={'class': 'form-control my-1'}),
             'bio': TextInput(attrs={'class': 'form-control my-1'}),
-            'gender': Select(attrs={'class': 'form-control my-1'}),
+            'gender': Select(attrs={'class': 'form-select my-1'}),
         }

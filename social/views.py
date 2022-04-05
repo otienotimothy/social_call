@@ -1,10 +1,10 @@
-from unicodedata import name
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .forms import UserRegistrationForm, LoginUserForm, CreatePostForm
+from .models import Post
 
 # Create your views here.
 def index(request):
@@ -17,7 +17,6 @@ def index(request):
 @login_required(login_url='login')
 def home(request):
     form = CreatePostForm()
-    context = {'form': form}
 
     if request.method == 'POST':
         form = CreatePostForm(request.Post, request.FILES)
@@ -29,6 +28,12 @@ def home(request):
         else:
             messages.error(request, 'An Error occurred while uploading your image')
 
+    try:
+        posts = Post.objects.all()
+    except:
+        messages.error(request, 'An Error occured while fetching Posts')
+    
+    context = {'form': form, 'posts':posts}
     return render(request, 'home.html', context)
 
 @login_required

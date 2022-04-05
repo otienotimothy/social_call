@@ -3,7 +3,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
-from .forms import UserRegistrationForm, LoginUserForm, CreatePostForm
+from .forms import UserRegistrationForm, LoginUserForm, CreatePostForm, EditProfileForm
 from .models import Post
 
 # Create your views here.
@@ -38,7 +38,9 @@ def home(request):
 
 @login_required
 def loadProfile(request, username):
-    return render(request, 'profile.html')
+    form = EditProfileForm()
+    context = {'form':form}
+    return render(request, 'profile.html', context)
 
 def signupUser(request):
     form = UserRegistrationForm()

@@ -1,14 +1,15 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
-from django.forms import EmailInput, TextInput, PasswordInput, FileInput
+from django.forms import EmailInput, TextInput, PasswordInput, FileInput, Select
 
-from .models import Post
+from .models import Post, Profile
+
 
 class UserRegistrationForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2' ]
+        fields = ['username', 'email', 'password1', 'password2']
         widgets = {
             'username': TextInput(attrs={'class': 'form-control'}),
             'email': EmailInput(attrs={'class': 'form-control'})
@@ -38,4 +39,17 @@ class CreatePostForm(forms.ModelForm):
 
         widgets = {
             'image_url': FileInput(attrs={'class': 'form-control mt-1'}),
+        }
+
+
+class EditProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['avatar', 'firstName', 'lastName', 'bio', 'gender']
+        widgets = {
+            'avatar': FileInput(attrs={'class': 'form-control my-1'}),
+            'firstName': TextInput(attrs={'class': 'form-control my-1'}),
+            'lastName': TextInput(attrs={'class': 'form-control my-1'}),
+            'bio': TextInput(attrs={'class': 'form-control my-1'}),
+            'gender': Select(attrs={'class': 'form-control my-1'}),
         }

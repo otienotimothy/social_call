@@ -13,7 +13,7 @@ class Profile(models.Model):
 
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, primary_key=True)
-    avatar = CloudinaryField('image')
+    avatar = CloudinaryField('image',)
     firstName = models.CharField(max_length=60, null=True)
     lastName = models.CharField(max_length=60, null=True)
     bio = models.CharField(max_length=200, null=True)

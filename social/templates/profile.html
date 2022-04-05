@@ -10,7 +10,13 @@
 		<div class="w-md-50 ps-md-5">
 			<div class="d-flex align-items-center justify-content-between mt-2">
 				<p class="fs-3">Username</p>
-				<a class="btn btn-primary">Edit Profile</a>
+				<a
+					class="btn btn-primary"
+					data-bs-toggle="modal"
+					data-bs-target="#exampleModal"
+				>
+					Edit Profile
+				</a>
 			</div>
 			<div class="d-flex align-items-center flex-wrap mt-2">
 				<p class="me-3">23 <span class="text-primary">Post</span></p>
@@ -91,4 +97,57 @@
 		</div>
 	</div>
 </div>
+
+<!-- Modal -->
+<div
+	class="modal fade"
+	id="exampleModal"
+	tabindex="-1"
+	aria-labelledby="exampleModalLabel"
+	aria-hidden="true"
+>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form action="">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+					<button
+						type="button"
+						class="btn-close"
+						data-bs-dismiss="modal"
+						aria-label="Close"
+					></button>
+				</div>
+				<div class="modal-body">
+					<div class="form-group mb-3">
+						<label class="form-label text-primary" for=""> Upload Profile Pic </label>
+						{{form.avatar}}
+					</div>
+					<div class="form-group mb-3">
+						<label class="form-label text-primary" for=""> First Name </label>
+						{{form.firstName}}
+					</div>
+					<div class="form-group mb-3">
+						<label class="form-label text-primary" for=""> Last Name </label>
+						{{form.lastName}}
+					</div>
+					<div class="form-group mb-3">
+						<label class="form-label text-primary" for=""> Gender </label>
+						{{form.gender}}
+					</div>
+					<div class="form-group mb-3">
+						<label class="form-label text-primary" for=""> Bio </label>
+						{{form.bio}}
+					</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+						Save changes
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
 {% endblock %}
+

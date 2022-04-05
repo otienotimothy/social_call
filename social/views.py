@@ -4,7 +4,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
-from .forms import UserRegistrationForm, LoginUserForm
+from .forms import UserRegistrationForm, LoginUserForm, CreatePostForm
 
 # Create your views here.
 def index(request):
@@ -16,7 +16,20 @@ def index(request):
 
 @login_required(login_url='login')
 def home(request):
-    return render(request, 'home.html')
+    form = CreatePostForm()
+    context = {'form': form}
+
+    if request.method == 'POST':
+        form = CreatePostForm(request.Post, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.posted_by_id = request.user.id
+            post.save()
+            messages.success(request, 'Your Post was Created Successfully')
+        else:
+            messages.error(request, 'An Error occurred while uploading your image')
+
+    return render(request, 'home.html', context)
 
 @login_required
 def loadProfile(request, username):

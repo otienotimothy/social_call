@@ -1,7 +1,9 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
-from django.forms import EmailInput, TextInput, PasswordInput
+from django.forms import EmailInput, TextInput, PasswordInput, FileInput
+
+from .models import Post
 
 class UserRegistrationForm(UserCreationForm):
     class Meta:
@@ -27,3 +29,13 @@ class LoginUserForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['password'].widget.attrs['class'] = 'form-control'
+
+
+class CreatePostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['image_url']
+
+        widgets = {
+            'image_url': FileInput(attrs={'class': 'form-control mt-1'}),
+        }

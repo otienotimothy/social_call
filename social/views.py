@@ -19,7 +19,7 @@ def home(request):
     form = CreatePostForm()
 
     if request.method == 'POST':
-        form = CreatePostForm(request.Post, request.FILES)
+        form = CreatePostForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
             post.posted_by_id = request.user.id

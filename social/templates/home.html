@@ -1,5 +1,6 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
-<div class="container">
+{% extends 'base.html' %} 
+{% load static %} {% block content %}
+<div class="container mt-3 mt-md-5">
 	<div class="row">
 		<div class="form-group my-5 col-12 col-md-5 col-lg-3">
 			<h3 class="mb-3 text-primary">Upload New Post</h3>
@@ -8,24 +9,24 @@
 				<button type="submit" class="btn btn-primary mt-2">Upload</button>
 			</form>
 		</div>
-		<div class="col-12 col-md-6 col-lg-8 d-flex flex-column align-items-center border-start border-dark ms-5">
+		<div class="col-12 col-md-7 col-lg-9 d-flex justify-content-around flex-wrap border-start border-dark">
 			{% if posts %} {% for post in posts %}
-			<div class="card w-50">
+			<div style="width: 28rem;" class="card mb-3">
 				<div class="card-header d-flex align-items-center">
 					<img
 						class="rounded-circle z-depth-2"
 						alt="100x100"
-						src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg"
+						src="{{user.profile.avatar.url}}"
 						width="60"
 						height="60"
 					/>
-					<p class="fs-5 ms-4 mt-2">Username</p>
+					<p class="fs-5 ms-4 mt-2"> {{user.username}} </p>
 				</div>
 				<div class="card-body">
 					<img
 						class="z-depth-2 w-100"
 						alt="100x100"
-						src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg"
+						src="{{post.image_url.url}}"
 					/>
 				</div>
 				<div class="card-footer">

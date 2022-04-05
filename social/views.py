@@ -36,7 +36,7 @@ def home(request):
     context = {'form': form, 'posts':posts}
     return render(request, 'home.html', context)
 
-@login_required
+@login_required(login_url='login')
 def loadProfile(request, username):
     form = EditProfileForm()
     context = {'form':form}

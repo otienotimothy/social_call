@@ -137,3 +137,13 @@ def addComment(request, postId):
             messages.error(request, 'An error occurred while posting your comment...')
 
     return redirect(home)
+
+@login_required(login_url='login')
+def deletePost(request, postId):
+    try:
+        post = Post.objects.get(pk=postId)
+        post.delete()
+    except:
+        messages.error(request, 'An error occured while tring to delete the post...')
+
+    return redirect('profile')

@@ -145,4 +145,4 @@ def deletePost(request, postId):
     except:
         messages.error(request, 'An error occured while tring to delete the post...')
 
-    return redirect('profile')
+    return redirect(f'profile/{request.user.username}')

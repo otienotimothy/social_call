@@ -38,6 +38,12 @@ def home(request):
 
 @login_required(login_url='login')
 def loadProfile(request, username):
+
+
+    if username != request.user.username:
+        logout(request)
+        return redirect('login')
+
     try:
         userProfile = User.objects.get(username=username)
         posts = Post.objects.filter(posted_by__username=username)

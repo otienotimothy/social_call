@@ -141,8 +141,7 @@ def addComment(request, postId):
 @login_required(login_url='login')
 def deletePost(request, postId):
     try:
-        post = Post.objects.get(pk=postId)
-        post.delete()
+        Post.objects.get(pk=postId).delete()
     except:
         messages.error(request, 'An error occured while tring to delete the post...')
 

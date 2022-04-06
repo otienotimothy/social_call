@@ -26,13 +26,19 @@
 				<p>23 <span class="text-danger">Following</span></p>
 			</div>
 			<p class="fs-5">
+				{% if profile.profile.firstName %}
 				<span class="d-inline-block me-3"> {{profile.profile.firstName}} </span>
+				{% endif %}
+				{% if profile.profile.lastName %}
 				<span class="d-inline-block"> {{profile.profile.lastName}} </span>
+				{% endif %}
 			</p>
+			{% if profile.profile.bio %}
 			<div>
 				<h5>Bio</h5>
 				<p> {{profile.profile.bio}} </p>
 			</div>
+			{% endif %}
 		</div>
 	</div>
 	<hr />
@@ -64,51 +70,6 @@
 				</h2>
 			</div>
 			{% endif %}
-			<!-- <div class="card mb-3">
-				<div class="card-body">
-					<img
-						class="z-depth-2 w-100"
-						alt="100x100"
-						src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg"
-						data-holder-rendered="true"
-					/>
-				</div>
-				<div class="card-footer">
-					<a href="">
-						<i class="fa-solid fa-trash-can"></i>
-					</a>
-				</div>
-			</div> -->
-			<!-- <div class="card mb-3">
-				<div class="card-body">
-					<img
-						class="z-depth-2 w-100"
-						alt="100x100"
-						src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg"
-						data-holder-rendered="true"
-					/>
-				</div>
-				<div class="card-footer">
-					<a href="">
-						<i class="fa-solid fa-trash-can"></i>
-					</a>
-				</div>
-			</div> -->
-			<!-- <div class="card mb-3">
-				<div class="card-body">
-					<img
-						class="z-depth-2 w-100"
-						alt="100x100"
-						src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg"
-						data-holder-rendered="true"
-					/>
-				</div>
-				<div class="card-footer">
-					<a href="">
-						<i class="fa-solid fa-trash-can"></i>
-					</a>
-				</div>
-			</div> -->
 		</div>
 	</div>
 </div>

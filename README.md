@@ -21,7 +21,7 @@ Social Call is web application that seeks to mimmick most of the functionalities
 
 ## Links
 
-- Web Application Link - <>
+- Web Application Link - <https://socialcall.herokuapp.com/>
 - Project Repository Link - <https://github.com/otienotimothy/social_call.git>
 
 ## Setup/Installation Requirements

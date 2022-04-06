@@ -30,6 +30,8 @@ def home(request):
 
     try:
         posts = Post.objects.all()
+    # for post in posts:
+    #     print(post.posted_by)
     except:
         messages.error(request, 'An Error occured while fetching Posts')
     

@@ -1,5 +1,4 @@
-{% extends 'base.html' %} 
-{% load static %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 <div class="container mt-3 mt-md-5">
 	<div class="row">
 		<div class="form-group my-5 col-12 col-md-5 col-lg-3">
@@ -9,9 +8,11 @@
 				<button type="submit" class="btn btn-primary mt-2">Upload</button>
 			</form>
 		</div>
-		<div class="col-12 col-md-7 col-lg-9 d-flex justify-content-around flex-wrap border-start border-dark">
+		<div
+			class="col-12 col-md-7 col-lg-9 d-flex justify-content-around flex-wrap border-start border-dark"
+		>
 			{% if posts %} {% for post in posts %}
-			<div style="width: 28rem;" class="card mb-3">
+			<div style="width: 28rem" class="card mb-3">
 				<div class="card-header d-flex align-items-center">
 					<img
 						class="rounded-circle z-depth-2"
@@ -20,7 +21,7 @@
 						width="60"
 						height="60"
 					/>
-					<p class="fs-5 ms-4 mt-2"> {{user.username}} </p>
+					<p class="fs-5 ms-4 mt-2">{{user.username}}</p>
 				</div>
 				<div class="card-body">
 					<img
@@ -39,7 +40,7 @@
 						</a>
 						<a
 							data-bs-toggle="collapse"
-							href="#comments-1"
+							href="#comments-{{post.id}}"
 							role="button"
 							class="d-flex align-items-center me-3 fs-4 text-decoration-none"
 						>
@@ -47,22 +48,28 @@
 						</a>
 					</div>
 					<div
-						id="comments-1"
+						id="comments-{{post.id}}"
 						class="collapse card-footer py-3 border-0"
 						style="background-color: #f8f9fa"
 					>
-						<form action="/add_comment/{{post.id}}" method="POST">
+						<div>
+							{% if post.comments.all %}
+							{% for comment in post.comments.all %}
+							<div class="mt-3">
+								<p>
+									<span class="text-primary">{{comment.commentor.username}}</span>:
+									{{comment.comment}}
+								</p>
+							</div>
+							{% endfor %}
+							{% else %}
+							<p class="text-muted">Be the first to comment on this post</p>
+							{% endif %}
+						</div>
+						<form action="/comment/{{post.id}}/" method="POST">
 							{% csrf_token %}
 							<div class="d-flex flex-start w-100">
-								<div class="form-outline w-100">
-									<input
-										type="text"
-										name=""
-										id=""
-										class="form-control form-control-lg"
-										placeholder="Comment"
-									/>
-								</div>
+								<div class="form-outline w-100">{{commentInput.comment}}</div>
 							</div>
 							<div class="float-end mt-2 pt-1">
 								<button type="submit" class="btn btn-primary btn-sm">

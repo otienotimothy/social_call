@@ -1,7 +1,7 @@
 from unicodedata import name
 from django.urls import path
 
-from .views import index, home, signupUser, loginUser, logoutUser, loadProfile
+from .views import index, home, signupUser, loginUser, logoutUser, loadProfile, addComment
 
 urlpatterns = [
     path('', index, name='index'),
@@ -9,5 +9,6 @@ urlpatterns = [
     path('profile/<str:username>/', loadProfile, name='profile'),
     path('signup/', signupUser, name='signup' ),
     path('login/', loginUser, name='login'),
-    path('logout/',logoutUser, name='logout')
+    path('logout/',logoutUser, name='logout'),
+    path('comment/<int:postId>/', addComment, name='comment')
 ]

@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django import forms
 from django.forms import EmailInput, TextInput, PasswordInput, FileInput, Select
 
-from .models import Post, Profile
+from .models import Post, Profile, Comment
 
 
 class UserRegistrationForm(UserCreationForm):
@@ -52,4 +52,13 @@ class EditProfileForm(forms.ModelForm):
             'lastName': TextInput(attrs={'class': 'form-control my-1'}),
             'bio': TextInput(attrs={'class': 'form-control my-1'}),
             'gender': Select(attrs={'class': 'form-select my-1'}),
+        }
+
+
+class CreateCommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['comment']
+        widgets = {
+            'comment': TextInput(attrs={'class': 'form-control form-control-lg', 'placeholder': "Comment"}),
         }

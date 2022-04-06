@@ -37,8 +37,8 @@ class Like(models.Model):
 
 
 class Comment(models.Model):
-    comment = models.TextField()
+    comment = models.CharField(max_length=200)
     commented_post = models.ForeignKey(
-        Post, on_delete=models.CASCADE)
+        Post, on_delete=models.CASCADE, related_name='comments')
     commentor = models.ForeignKey(
         User, on_delete=models.CASCADE)

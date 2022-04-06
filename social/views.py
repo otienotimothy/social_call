@@ -3,7 +3,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
-from .forms import UserRegistrationForm, LoginUserForm, CreatePostForm, EditProfileForm
+from .forms import UserRegistrationForm, LoginUserForm, CreatePostForm, EditProfileForm, CreateCommentForm
 from .models import  Profile, Post
 
 # Create your views here.
@@ -17,7 +17,7 @@ def index(request):
 @login_required(login_url='login')
 def home(request):
     form = CreatePostForm()
-
+    commentForm = CreateCommentForm()
     if request.method == 'POST':
         form = CreatePostForm(request.POST, request.FILES)
         if form.is_valid():
@@ -33,7 +33,7 @@ def home(request):
     except:
         messages.error(request, 'An Error occured while fetching Posts')
     
-    context = {'form': form, 'posts':posts}
+    context = {'form': form, 'posts':posts, 'commentInput': commentForm}
     return render(request, 'home.html', context)
 
 @login_required(login_url='login')
@@ -55,6 +55,8 @@ def loadProfile(request, username):
     context = {'form':form, 'profile': userProfile, 'posts':posts}
     return render(request, 'profile.html', context)
 
+# User Creation and Authentication 
+# 1. User Creation
 def signupUser(request):
     form = UserRegistrationForm()
     context = {'form': form}
@@ -82,6 +84,7 @@ def signupUser(request):
                 return redirect(home)
     return render(request, 'signup.html', context)
 
+# 2. User Authentication
 def loginUser(request):
     form = LoginUserForm()
     context = {'form': form}
@@ -114,3 +117,17 @@ def loginUser(request):
 def logoutUser(request):
     logout(request)
     return redirect(loginUser)
+
+@login_required(login_url='login')
+def addComment(request, postId):
+    if request.method == 'POST':
+        form = CreateCommentForm(request.POST)
+        if form.is_valid():
+            commentObj = form.save(commit=False)
+            commentObj.commented_post_id = postId
+            commentObj.commentor_id = request.user.id
+            commentObj.save()
+        else:
+            messages.error(request, 'An error occurred while posting your comment...')
+
+    return redirect(home)
